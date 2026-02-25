@@ -23,6 +23,7 @@ Assuming we the following component (`HelloComponent.razor`):
 ```
 
 ## Testing the component
+```c#
 using Bunit;
 using Xunit;
 
@@ -43,7 +44,7 @@ public class HelloComponentTests : BunitTestContext
         cut.MarkupMatches("<h3>Hello Yosmel</h3>");
     }
 }
-
+```
 # Key features
 ## BunitTestContext
 `BunitTestContext` provides the test environment for rendering components.
