@@ -54,6 +54,19 @@ Our testing class can inherit from it:
 public class MyComponentTests : BunitContext
 ```
 
+## Alternative: Creating a Context Manually
+Instead of inheriting from BunitContext, we can instantiate it directly:
+
+```c#
+using var ctx = new BunitContext();
+
+var cut = ctx.Render<HelloComponent>();
+```
+
+This is useful when:
+- We prefer composition over inheritance
+- We want isolated contexts per test
+
 ## Render<T>()
 Renders a Blazor component inside the test environment.
 ```c#
@@ -105,3 +118,9 @@ public void Counter_ShouldIncrement_WhenButtonClicked()
     """);
 }
 ```
+
+# Important Notes
+- `cut` stands for **Component Under Test** (bUnit convention).
+- `Find()` and `FindAll()` asserton methods come from bUnit.
+- `Assert.*` methods come from xUnit.
+- `Render<T>()` renders the component and applies parameters via a builder used with lambda syntax.
