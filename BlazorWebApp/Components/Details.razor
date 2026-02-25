@@ -1,0 +1,37 @@
+@page "/details/{Id:int}"
+@rendermode InteractiveServer
+
+@using Models
+
+@if (Product == null)
+{
+    <p>Product @Id not found :(</p>
+} else {
+    <div style="display: flex; justify-content: center; align-content: center;">
+        <div>
+            <ProductCard Id="@Product.Id" Name="@Product.Name"  Price="@Product.Price" />
+        </div>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int Id {get; set;} // Set through the URL parameter
+
+    private List<Product> products = new List<Product>(); // Empty list, we are populating it OnInitialized()
+    
+    public Product? Product { get; set;}
+
+    protected override void OnInitialized()
+    {
+        products = new List<Product>() // reassigning products with a populated list
+        {
+            new Product { Id = 1, Name = "Laptop", Price= 999.9},
+            new Product { Id = 2, Name = "Mouse", Price= 999.9},
+            new Product { Id = 3, Name = "Phone", Price= 999.9},
+        };
+
+        Product = products.Find((i) => i.Id == Id);
+    }
+}
