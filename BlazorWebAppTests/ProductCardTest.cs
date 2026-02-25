@@ -1,7 +1,6 @@
 using Bunit;
 using Xunit;
 
-using Models;
 using BlazorWebApp.Components;
 
 namespace BlazorWebAppTests.Components;
@@ -11,12 +10,16 @@ public class ProductCardTests : BunitContext // BunitContext is the class that a
     [Fact]
     public void ProductCard_Renders_Product_Data_Correctly()
     {
-        // Arrange
 
+        // Per documentation, we can also initiate a BunitContext and use it instead of inheriting from it, ctx.Render ...
+        // using var ctx = new BunitContext();
+
+        // Arrange
         int expectedId = 1;
         string expectedName = "Test product";
         double expectedPrice = 999.99;
 
+        // Act
         // Renders a component, using a parameterBuilder with lambda expression
         var cut = Render<ProductCard>(parameters => parameters
             .Add(p => p.Id, expectedId)
@@ -24,9 +27,10 @@ public class ProductCardTests : BunitContext // BunitContext is the class that a
             .Add(p => p.Price, expectedPrice)
         );
 
-
-        cut.Find("h1").MarkupMatches($"<h1>{expectedName}</h1>");
-        cut.FindAll("p")[0].MarkupMatches($"<p>Id: {expectedId}</p>");
-        cut.FindAll("p")[1].MarkupMatches($"<p>Price: {expectedPrice}</p>");
+        // Assert - Assert syntax comes from xUnit, find, findall is from bUnit
+        // cut is short for component under test (bUnit convention)
+        Assert.Equal(expectedName, cut.Find("h1").TextContent);
+        Assert.Equal($"Id: {expectedId}", cut.FindAll("p")[0].TextContent);
+        Assert.Equal($"Price: {expectedPrice}", cut.FindAll("p")[1].TextContent);
     }
 }
