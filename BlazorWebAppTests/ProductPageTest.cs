@@ -10,7 +10,7 @@ public class ProductsPageTest : BunitContext
     public void ProductPage_Shows_Products_Corretly()
     {
         // Act - bUnit will call OnInitialized automaticall, products list gets populated
-        var cut = Render<Products>();
+        var cut = Render<Home>();
 
         // Find all <li> elements (product names)
         var productItems = cut.FindAll("li");
