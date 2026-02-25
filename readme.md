@@ -7,7 +7,7 @@ It allows us to render components in a test context and verify their behavior an
 It integrates naturally with xUnit.
 
 # Installation
-We add the NuGet package to your test project with `dotnet add package bunit`
+We add the NuGet package to our test project with `dotnet add package bunit`
 
 # Usage
 
