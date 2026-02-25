@@ -3,7 +3,7 @@ using Xunit;
 using BlazorWebApp.Components;
 
 namespace BlazorWebAppTests.Components;
-public class CounterTest: BunitContext
+public class CounterTests: BunitContext
 {
     [Fact]
     public void Counter_Increments_WhenButtonIsClicked()

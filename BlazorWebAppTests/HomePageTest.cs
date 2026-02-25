@@ -4,7 +4,7 @@ using BlazorWebApp.Components;
 
 namespace BlazorWebAppTests.Pages;
 
-public class ProductsPageTest : BunitContext
+public class HomePageTests : BunitContext
 {
     [Fact]
     public void ProductPage_Shows_Products_Corretly()
@@ -19,4 +19,5 @@ public class ProductsPageTest : BunitContext
         Assert.Equal(3, productItems.Count);
         Assert.Equal("Laptop", productItems[0].TextContent);
     }
+    
 }

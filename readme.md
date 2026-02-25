@@ -1,4 +1,11 @@
-# Testing Blazor Components with bUnit
+# Project
+In this project, we are testing our previous [Blazor Web App](https://github.com/yosang/csharp-blazor). We have extended it with a `Counter` component in order to test the click of a button on the UI with `bUnit`.
+
+In summary, we are testing:
+- `Home.razor` page lists `Products` correctly. 
+- `ProductCard.razor` component renders correctly.
+- `Counter.razor` component behaves as expected when the increment button is clicked.
+
 ## What is bUnit?
 
 bUnit is a testing library for Blazor components.
@@ -12,7 +19,7 @@ We add the NuGet package to our test project with `dotnet add package bunit`
 # Usage
 
 ## Component
-Assuming we the following component (`HelloComponent.razor`):
+Assuming we have the following component (`HelloComponent.razor`):
 ```c#
 <h3>Hello @Name</h3>
 
@@ -113,7 +120,7 @@ public void Counter_ShouldIncrement_WhenButtonClicked()
 
     // Assert
     cut.MarkupMatches("""
-        <p role="status">Current count: 1</p>
+        <p>Current count: 1</p>
         <button>Click me</button>
     """);
 }
@@ -124,3 +131,10 @@ public void Counter_ShouldIncrement_WhenButtonClicked()
 - `Find()` and `FindAll()` asserton methods come from bUnit.
 - `Assert.*` methods come from xUnit.
 - `Render<T>()` renders the component and applies parameters via a builder used with lambda syntax.
+
+# Usage
+1. Clone the project with `git clone`.
+2. Run tests with `dotnet test`
+
+# Author
+[Yosmel Chiang](https://github.com/yosang)
