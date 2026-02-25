@@ -3,21 +3,29 @@
 
 @using Models
 
+<div style="display: flex; justify-content: center; align-content: center;">
 
+<div style="display: flex; flex-direction: column; padding-right: 20px; align-items: center;">
+<Counter />
+</div>
+
+<div style="display: flex; flex-direction: column; padding-left: 20px; align-items: center;">
+
+<h1>Products</h1>
 @if(products.Count == 0)
 {
     <p>Loading...</p>
 } else {
     @foreach (var p in products)
     {
-        <div style="display: flex; justify-content: center; align-content: center;">
             <ul>
                  <a href="/details/@p.Id"><li style="list-style: none;">@p.Name</li></a>
             </ul>
             
-        </div>
     }
 }
+</div>
+</div>
 
 @* This code is responsible for generating data and using 
 the OnInitialized method once this component is rendered *@
