@@ -27,7 +27,7 @@ Assuming we the following component (`HelloComponent.razor`):
 using Bunit;
 using Xunit;
 
-public class HelloComponentTests : BunitTestContext
+public class HelloComponentTests : BunitContext
 {
     [Fact]
     public void Component_ShouldRenderNameCorrectly()
@@ -46,12 +46,12 @@ public class HelloComponentTests : BunitTestContext
 }
 ```
 # Key features
-## BunitTestContext
-`BunitTestContext` provides the test environment for rendering components.
+## BunitContext
+`BunitContext` provides the test environment for rendering components.
 
 Our testing class can inherit from it:
 ```c#
-public class MyComponentTests : TestContext
+public class MyComponentTests : BunitContext
 ```
 
 ## Render<T>()
